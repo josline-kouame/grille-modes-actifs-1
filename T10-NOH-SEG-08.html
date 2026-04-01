@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>T10 NOH · SEG-08 · M. Yourcenar → Simone Veil</title>
+<style>
+/* Polices système — aucune dépendance réseau */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  --font-serif: Georgia, 'Times New Roman', serif;
+}
+
+/* ── OPTIMISATIONS MOBILE ── */
+@media(max-width:768px){
+  body{font-size:16px;}
+  .hdr{padding:1rem .9rem .75rem;}
+  .hdr h1{font-size:1.05rem;}
+  .wrap{padding:.75rem .7rem 7rem;}
+  .sb{width:54px;height:54px;font-size:1.05rem;border-radius:6px;}
+  .sg{gap:6px;}
+  .slabels{grid-template-columns:54px 54px 54px 1fr;gap:6px;padding:0 .7rem .4rem;}
+  .slv{font-size:.62rem;}
+  .tbtn{font-size:.73rem;padding:.65rem .8rem;}
+  .cc{margin-bottom:.7rem;border-radius:8px;}
+  .cctop{padding:.9rem .9rem .6rem;gap:.55rem;grid-template-columns:1fr auto;}
+  .ccname{font-size:.92rem;}
+  .ccdesc{font-size:.76rem;}
+  .chkgrid{grid-template-columns:1fr;}
+  .chkgrid label, .chkrow label{font-size:.8rem;padding:.06rem 0;}
+  .ni,.ni2,.other-input{font-size:.84rem;padding:.2rem 0;}
+  .ta,.enta{font-size:.8rem;min-height:58px;}
+  .dual{grid-template-columns:1fr;}
+  .dz:first-child{border-right:none;border-bottom:1px dashed var(--border);}
+  .refbox{grid-template-columns:1fr;}
+  .fgrid{grid-template-columns:1fr;}
+  .entgrid{grid-template-columns:1fr 1fr;}
+  .sgrid{grid-template-columns:1fr 1fr;}
+  .gbox{flex-direction:column;gap:.7rem;text-align:center;}
+  .axhdr{padding:.8rem .85rem;}
+  .axnum{font-size:1.15rem;}
+  .axtitle{font-size:.92rem;}
+  .sn{padding:.5rem .7rem;gap:.4rem;}
+  .taz{padding:.5rem .7rem;}
+  .chkblock{padding:.5rem .7rem .6rem;}
+  .infoblock{padding:.65rem .85rem;}
+  .carteblock{padding:.75rem .85rem;}
+  .ff{padding:.5rem .75rem;}
+}
+@media(pointer:coarse){
+  .sb{min-width:52px;min-height:52px;}
+  .tbtn{min-height:44px;}
+  input[type="checkbox"],input[type="radio"]{
+    min-width:20px;min-height:20px;
+    accent-color:var(--teal);
+  }
+  label{line-height:1.5;}
+}
+
+</style>
+<style>
+:root {
+  --bm:#003D7C; --teal:#00857C; --gold:#B8860B;
+  --bg:#F2F0EC; --white:#FDFCFA; --ink:#1A1A1C; --muted:#666; --border:#D4D0C8;
+  --s1:#C0392B; --s2:#E67E22; --s3:#27AE60;
+  --obs:#0277BD; --usr:#6A1B9A; --genre:#880E4F;
+  --ax1:#1A4A8C; --ax2:#1B5E3A; --ax3:#4A148C; --ax4:#880E4F; --ax5:#BF360C;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--ink);font-size:14px;line-height:1.55;min-height:100vh;}
+
+/* ── PROGRESS ── */
+.pbar{height:3px;background:var(--border);position:sticky;top:0;z-index:300;}
+.pfill{height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .4s;width:0%;}
+
+/* ── HEADER ── */
+.hdr{background:var(--bm);color:#fff;padding:1.3rem 1.5rem .9rem;}
+.hdr-badge{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;background:var(--teal);color:#fff;display:inline-block;padding:.18rem .55rem;border-radius:2px;margin-bottom:.5rem;}
+.hdr h1{font-family:var(--font-serif);font-size:clamp(1rem,3.5vw,1.5rem);font-weight:600;line-height:1.15;margin-bottom:.2rem;}
+.hdr h1 em{font-style:italic;font-weight:300;opacity:.8;}
+.hdr-sub{font-family:var(--font-mono);font-size:.6rem;opacity:.45;margin-top:.4rem;}
+
+/* ── SEGMENT BAR ── */
+.segbar{background:#002458;padding:.4rem .9rem;display:flex;gap:.28rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.segbar::-webkit-scrollbar{display:none;}
+.seg-lbl{font-family:var(--font-mono);font-size:.55rem;color:rgba(255,255,255,.28);letter-spacing:.1em;white-space:nowrap;align-self:center;margin-right:.2rem;flex-shrink:0;}
+.sbtn{background:transparent;border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.45);font-family:var(--font-mono);font-size:.56rem;padding:.22rem .5rem;cursor:pointer;border-radius:2px;transition:all .13s;white-space:nowrap;flex-shrink:0;}
+.sbtn.on{background:var(--gold);border-color:var(--gold);color:#1a0e00;font-weight:600;}
+
+/* ── ACTIVE STRIP ── */
+.strip{background:#001940;padding:.32rem 1.2rem;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;}
+.strip-id{font-family:var(--font-mono);font-size:.68rem;color:var(--gold);font-weight:500;}
+.strip-name{font-family:var(--font-mono);font-size:.6rem;color:rgba(255,255,255,.4);}
+.strip-dist{font-family:var(--font-mono);font-size:.58rem;color:rgba(255,255,255,.22);}
+
+/* ── TABS ── */
+.tabbar{background:var(--bm);display:flex;overflow-x:auto;scrollbar-width:none;border-top:1px solid rgba(255,255,255,.07);padding:0 .5rem;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tbtn{background:none;border:none;color:rgba(255,255,255,.42);font-family:var(--font-sans);font-size:.67rem;font-weight:500;padding:.58rem .72rem;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .13s;flex-shrink:0;}
+.tbtn.on{color:#fff;border-bottom-color:var(--gold);}
+
+/* ── WRAP ── */
+.wrap{max-width:860px;margin:0 auto;padding:1rem .9rem 6rem;}
+.panel{display:none;animation:fadeIn .18s ease;}
+.panel.on{display:block;}
+@keyframes fadeIn{from{opacity:.3;transform:translateY(3px)}to{opacity:1;transform:none}}
+
+/* ── CONVENTIONS LEGEND ── */
+.legend-strip{background:var(--white);border:1px solid var(--border);border-radius:5px;padding:.42rem .9rem;margin-bottom:.8rem;display:flex;gap:1.1rem;flex-wrap:wrap;align-items:center;}
+.li{display:flex;align-items:center;gap:.3rem;font-size:.69rem;}
+.ld{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
+.lsep{color:var(--border);font-size:.8rem;}
+
+/* ── AXE HEADER ── */
+.axhdr{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;background:var(--white);border-left:3px solid var(--ac,var(--bm));border-radius:0 5px 5px 0;margin-bottom:.85rem;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.axnum{font-family:var(--font-mono);font-size:1.35rem;font-weight:500;color:var(--ac,var(--bm));line-height:1;flex-shrink:0;padding-top:.05rem;}
+.axtitle{font-family:var(--font-serif);font-size:.95rem;font-weight:600;margin-bottom:.12rem;}
+.axdesc{font-size:.72rem;color:var(--muted);line-height:1.45;}
+.axpill{display:inline-block;font-family:var(--font-mono);font-size:.52rem;letter-spacing:.07em;text-transform:uppercase;padding:.12rem .4rem;border-radius:2px;margin-top:.35rem;background:color-mix(in srgb,var(--ac,var(--bm)) 9%,white);color:var(--ac,var(--bm));}
+
+/* ── SECTION LABEL ── */
+.seclbl{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ac,var(--bm));padding:.7rem 0 .28rem;border-bottom:1px solid color-mix(in srgb,var(--ac,var(--bm)) 16%,transparent);margin-bottom:.5rem;}
+
+/* ── CRITÈRE CARD ── */
+.cc{background:var(--white);border:1px solid var(--border);border-radius:6px;margin-bottom:.5rem;overflow:hidden;}
+.cctop{padding:.8rem .95rem .55rem;display:grid;grid-template-columns:1fr auto;gap:.75rem;align-items:start;}
+.ccmeta{display:flex;align-items:center;gap:.45rem;margin-bottom:.2rem;flex-wrap:wrap;}
+.cccode{font-family:var(--font-mono);font-size:.56rem;color:var(--ac,var(--bm));letter-spacing:.07em;font-weight:500;}
+.gtag{font-family:var(--font-mono);font-size:.5rem;background:var(--genre);color:#fff;padding:.08rem .3rem;border-radius:2px;letter-spacing:.05em;}
+.ccname{font-weight:600;font-size:.85rem;margin-bottom:.15rem;}
+.ccdesc{font-size:.72rem;color:var(--muted);line-height:1.45;}
+
+/* ── SCORE BUTTONS ── */
+.sg{display:flex;gap:3px;flex-shrink:0;}
+.sb{width:40px;height:40px;border-radius:4px;border:1.5px solid var(--border);background:var(--bg);font-family:var(--font-mono);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .11s;color:var(--ink);touch-action:manipulation;display:flex;align-items:center;justify-content:center;}
+.sb:active{transform:scale(.91);}
+.sb[data-v="1"].on{background:var(--s1);border-color:var(--s1);color:#fff;}
+.sb[data-v="2"].on{background:var(--s2);border-color:var(--s2);color:#fff;}
+.sb[data-v="3"].on{background:var(--s3);border-color:var(--s3);color:#fff;}
+.sb[data-v="NC"].on{background:var(--muted);border-color:var(--muted);color:#fff;font-size:.52rem;font-weight:500;}
+
+/* ── SCORE LABELS ── */
+.slabels{display:grid;grid-template-columns:40px 40px 40px 1fr;gap:3px;padding:0 .95rem .4rem;}
+.slv{font-size:.56rem;color:var(--muted);text-align:center;line-height:1.3;}
+
+/* ── RÉFÉRENTIEL LARGEUR ── */
+.refbox{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin:.1rem 0 .8rem;}
+.rsi{border-radius:5px;padding:.55rem .65rem;border-top:3px solid transparent;}
+.rs1{background:#FDECEA;border-color:var(--s1);}
+.rs2{background:#FEF5E7;border-color:var(--s2);}
+.rs3{background:#EAFAF1;border-color:var(--s3);}
+.rsnum{font-family:var(--font-mono);font-size:1.1rem;font-weight:600;line-height:1;}
+.rs1 .rsnum{color:var(--s1)}.rs2 .rsnum{color:var(--s2)}.rs3 .rsnum{color:var(--s3)}
+.rslbl{font-weight:600;font-size:.75rem;margin:.1rem 0 .12rem;}
+.rs1 .rslbl{color:var(--s1)}.rs2 .rslbl{color:var(--s2)}.rs3 .rslbl{color:var(--s3)}
+.rsval{font-family:var(--font-mono);font-size:.7rem;font-weight:600;margin-bottom:.18rem;}
+.rsdesc{font-size:.64rem;color:var(--muted);line-height:1.35;}
+
+/* ── ZONES OBS / USR ── */
+.dual{display:grid;grid-template-columns:1fr 1fr;border-top:1px dashed var(--border);}
+.dz{padding:.5rem .85rem;}
+.dz:first-child{border-right:1px dashed var(--border);}
+.dzh{display:flex;align-items:center;gap:.32rem;margin-bottom:.25rem;}
+.zt{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.07em;text-transform:uppercase;padding:.1rem .34rem;border-radius:2px;font-weight:500;white-space:nowrap;}
+.zt.obs{background:color-mix(in srgb,var(--obs) 10%,white);color:var(--obs);border:1px solid color-mix(in srgb,var(--obs) 22%,transparent);}
+.zt.usr{background:color-mix(in srgb,var(--usr) 10%,white);color:var(--usr);border:1px solid color-mix(in srgb,var(--usr) 22%,transparent);}
+.zt.g{background:color-mix(in srgb,var(--genre) 10%,white);color:var(--genre);border:1px solid color-mix(in srgb,var(--genre) 22%,transparent);}
+.ni{width:100%;border:none;border-bottom:1px dashed var(--border);background:transparent;font-family:var(--font-sans);font-size:.74rem;color:var(--ink);padding:.08rem 0;outline:none;}
+.ni:focus{border-bottom-color:var(--teal);}
+
+/* ── SINGLE NOTE ── */
+.sn{border-top:1px dashed var(--border);padding:.45rem .85rem;display:flex;gap:.45rem;align-items:center;}
+.snl{font-family:var(--font-mono);font-size:.53rem;color:var(--muted);white-space:nowrap;flex-shrink:0;}
+.ni2{flex:1;border:none;border-bottom:1px dashed var(--border);background:transparent;font-family:var(--font-sans);font-size:.74rem;color:var(--ink);padding:.08rem 0;outline:none;}
+.ni2:focus{border-bottom-color:var(--teal);}
+.pb{background:none;border:1px solid var(--border);border-radius:3px;padding:.13rem .38rem;font-size:.56rem;color:var(--muted);cursor:pointer;white-space:nowrap;flex-shrink:0;font-family:var(--font-mono);}
+.pb:hover{border-color:var(--teal);color:var(--teal);}
+
+/* ── TEXTAREA ZONE ── */
+.taz{border-top:1px dashed var(--border);padding:.5rem .85rem;}
+.talbl{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:.28rem;display:flex;align-items:center;gap:.3rem;}
+.ta{width:100%;border:1px solid color-mix(in srgb,var(--border) 80%,transparent);border-radius:4px;background:var(--bg);font-family:var(--font-sans);font-size:.74rem;color:var(--ink);padding:.45rem .65rem;resize:vertical;min-height:48px;outline:none;}
+.ta:focus{border-color:var(--teal);}
+
+/* ── CHECKLIST BLOCK ── */
+.chkblock{border-top:1px dashed var(--border);padding:.5rem .85rem .55rem;}
+.chklbl{font-family:var(--font-mono);font-size:.53rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.38rem;}
+.chkgrid{display:grid;grid-template-columns:1fr 1fr;gap:.22rem .7rem;}
+.chkgrid label,.chkrow label{display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;}
+.chkgrid input,.chkrow input{margin-top:2px;flex-shrink:0;}
+.chkrow{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.1rem;}
+.chkrow label{font-size:.74rem;}
+.other-input{border:none;border-bottom:1px dashed var(--border);background:transparent;font-family:var(--font-sans);font-size:.74rem;color:var(--ink);padding:.05rem 0;outline:none;flex:1;min-width:100px;}
+.other-input:focus{border-bottom-color:var(--teal);}
+
+/* ── FICHE ── */
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.9rem;}
+.ff{background:var(--white);border:1px solid var(--border);border-radius:5px;padding:.55rem .8rem;}
+.ffl{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.28rem;}
+.ffi{width:100%;border:none;border-bottom:1.5px solid var(--border);background:transparent;font-family:var(--font-sans);font-size:.8rem;color:var(--ink);padding:.12rem 0;outline:none;}
+.ffi:focus{border-bottom-color:var(--teal);}
+select.ffi{cursor:pointer;}
+
+/* ── CARTE SIG ── */
+.carteblock{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:.8rem .95rem;margin-bottom:.8rem;}
+.cartetit{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bm);margin-bottom:.55rem;}
+.cartezone{border:2px dashed var(--border);border-radius:4px;height:185px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;color:var(--muted);font-size:.74rem;cursor:pointer;background:var(--bg);overflow:hidden;transition:border-color .15s;}
+.cartezone:hover{border-color:var(--teal);}
+.cartezone img{width:100%;height:100%;object-fit:contain;}
+.cartelegende{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:.5rem;}
+.cleg{display:flex;align-items:center;gap:.28rem;font-size:.63rem;color:var(--muted);}
+.clegdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+/* ── BLOC INFO ── */
+.infoblock{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:.7rem .95rem;margin-bottom:.75rem;}
+.infotit{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem;font-weight:500;}
+
+/* ── ENTRETIENS ── */
+.entb{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:.85rem .95rem;margin-bottom:.6rem;}
+.enthd{display:flex;align-items:center;gap:.55rem;margin-bottom:.65rem;}
+.entn{font-family:var(--font-mono);font-size:.6rem;background:color-mix(in srgb,var(--usr) 12%,white);color:var(--usr);padding:.16rem .45rem;border-radius:2px;font-weight:500;}
+.entl{font-weight:600;font-size:.8rem;color:var(--usr);}
+.entgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.6rem;}
+.entfield{display:flex;flex-direction:column;gap:.22rem;}
+.entflbl{font-family:var(--font-mono);font-size:.53rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);}
+.entfinp{border:1px solid var(--border);border-radius:3px;padding:.28rem .45rem;font-family:var(--font-sans);font-size:.74rem;color:var(--ink);background:var(--white);outline:none;}
+.entfinp:focus{border-color:var(--usr);}
+.entr{display:grid;grid-template-columns:90px 1fr;gap:.5rem;margin-bottom:.4rem;align-items:start;}
+.entprofil{font-family:var(--font-mono);font-size:.58rem;padding:.25rem .45rem;border-radius:3px;text-align:center;line-height:1.3;}
+.ep1{background:color-mix(in srgb,var(--s3) 12%,white);color:var(--s3);}
+.ep2{background:color-mix(in srgb,var(--s1) 12%,white);color:var(--s1);}
+.ep3{background:color-mix(in srgb,var(--ax3) 12%,white);color:var(--ax3);}
+.enta{width:100%;border:1px solid color-mix(in srgb,var(--border) 80%,transparent);border-radius:4px;background:var(--bg);font-family:var(--font-sans);font-size:.74rem;color:var(--ink);padding:.4rem .6rem;resize:vertical;min-height:40px;outline:none;}
+.enta:focus{border-color:var(--usr);}
+
+/* ── SYNTHÈSE ── */
+.gbox{background:var(--bm);color:#fff;border-radius:7px;padding:1rem 1.3rem;display:flex;align-items:center;gap:1.3rem;margin:1rem 0;}
+.gnum{font-family:var(--font-serif);font-size:2.6rem;font-weight:600;line-height:1;flex-shrink:0;}
+.gbar{flex:1;height:5px;background:rgba(255,255,255,.18);border-radius:2px;overflow:hidden;}
+.gfill{height:100%;background:var(--gold);border-radius:2px;transition:width .5s;}
+.sgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem;margin:.9rem 0;}
+.sc{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:.7rem .65rem;text-align:center;border-top:3px solid var(--ac,var(--bm));}
+.scl{font-family:var(--font-mono);font-size:.53rem;color:var(--muted);letter-spacing:.05em;margin-bottom:.35rem;}
+.scv{font-family:var(--font-serif);font-size:1.75rem;font-weight:600;color:var(--ac,var(--bm));line-height:1;}
+.scm{font-size:.6rem;color:var(--muted);}
+.scb{height:3px;background:var(--border);border-radius:2px;margin-top:.4rem;overflow:hidden;}
+.scf{height:100%;background:var(--ac,var(--bm));border-radius:2px;transition:width .5s;}
+.sstat{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.8rem;}
+.ssi{font-family:var(--font-mono);font-size:.56rem;padding:.2rem .5rem;border-radius:2px;border:1px solid var(--border);color:var(--muted);background:var(--white);}
+.ssi.done{background:color-mix(in srgb,var(--s3) 12%,white);border-color:var(--s3);color:var(--s3);}
+.radarwrap{display:flex;justify-content:center;margin:.9rem 0;}
+.btnrow{display:flex;gap:.55rem;flex-wrap:wrap;margin:.7rem 0;}
+.b1{background:var(--bm);color:#fff;border:none;border-radius:4px;padding:.5rem 1.1rem;font-family:var(--font-sans);font-size:.76rem;font-weight:500;cursor:pointer;}
+.b2{background:transparent;color:var(--bm);border:1.5px solid var(--bm);border-radius:4px;padding:.45rem 1rem;font-family:var(--font-sans);font-size:.76rem;font-weight:500;cursor:pointer;}
+.b2:hover,.b1:hover{opacity:.85;}
+
+@media(max-width:620px){
+  .fgrid,.dual,.entgrid,.sgrid{grid-template-columns:1fr;}
+  .sgrid{grid-template-columns:1fr 1fr;}
+  .refbox{grid-template-columns:1fr 1fr;}
+  .chkgrid{grid-template-columns:1fr;}
+  .gbox{flex-direction:column;gap:.8rem;text-align:center;}
+  .dz:first-child{border-right:none;border-bottom:1px dashed var(--border);}
+}
+@media print{
+  .pbar,.segbar,.tabbar,.strip,.btnrow,.pb{display:none!important;}
+  .panel{display:block!important;page-break-after:always;}
+  .cc{page-break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+
+<div class="pbar"><div class="pfill" id="pf"></div></div>
+
+<div class="hdr">
+  <div class="hdr-badge">Bruxelles Mobilité — Audit terrain</div>
+  <h1>Modes actifs aux abords du T10 NOH<br><em>Neder-Over-Heembeek</em></h1>
+  <div class="hdr-sub" id="hdrDate"></div>
+</div>
+
+<div class="strip"><span class="strip-id">SEG-08</span><span class="strip-name">M. Yourcenar → Simone Veil</span><span class="strip-dist">372 m</span></div>
+
+<div class="tabbar">
+  <button class="tbtn on"  onclick="swTab('ax0',this)">◈ Fiche</button>
+  <button class="tbtn"     onclick="swTab('ax1',this)">① Cheminements</button>
+  <button class="tbtn"     onclick="swTab('ax2',this)">② Connexions</button>
+  <button class="tbtn"     onclick="swTab('ax3',this)">③ Confort & Espace</button>
+  <button class="tbtn"     onclick="swTab('ax4',this)">④ Sécurité & Vécu</button>
+  <button class="tbtn"     onclick="swTab('ax5',this)">⑤ Recommandations</button>
+  <button class="tbtn"     onclick="swTab('ent',this)">💬 Entretiens</button>
+  <button class="tbtn"     onclick="swTab('syn',this)">◉ Synthèse</button>
+</div>
+
+<div class="wrap">
+
+<!-- Légende conventions -->
+<div class="legend-strip">
+  <span style="font-family:var(--font-mono);font-size:.55rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;">Conventions :</span>
+  <div class="li"><div class="ld" style="background:var(--s1)"></div><strong>1</strong> Insuffisant</div>
+  <div class="li"><div class="ld" style="background:var(--s2)"></div><strong>2</strong> Satisfaisant</div>
+  <div class="li"><div class="ld" style="background:var(--s3)"></div><strong>3</strong> Excellent</div>
+  <div class="li"><div class="ld" style="background:var(--muted)"></div><strong>NC</strong> Non concerné</div>
+  <span class="lsep">|</span>
+  <div class="li"><div class="ld" style="background:var(--obs)"></div><strong style="color:var(--obs)">Obs.</strong> relevé terrain</div>
+  <div class="li"><div class="ld" style="background:var(--usr)"></div><strong style="color:var(--usr)">Usager</strong> vécu, entretien</div>
+  <div class="li"><div class="ld" style="background:var(--genre)"></div><strong style="color:var(--genre)">Genre</strong></div>
+</div>
+
+<!-- ═══════════════════════════════
+     AX0 — FICHE TERRAIN
+════════════════════════════════ -->
+<div id="p-ax0" class="panel on">
+  <div class="axhdr" style="--ac:var(--bm)">
+    <div class="axnum" style="color:var(--bm)">AX0</div>
+    <div>
+      <div class="axtitle">Fiche de contextualisation</div>
+      <div class="axdesc">À compléter avant toute évaluation. Cadrage du segment — non noté.</div>
+      <span class="axpill">Observateur · SIG BM</span>
+    </div>
+  </div>
+
+  <!-- Carte SIG -->
+  <div class="carteblock">
+    <div class="cartetit">🗺 Carte SIG du segment — cliquer pour charger</div>
+    <input type="file" id="carteFile" accept="image/*" style="display:none" onchange="loadCarte(this)">
+    <div class="cartezone" id="carteZone" onclick="document.getElementById('carteFile').click()">
+      <span style="font-size:1.6rem">🗺</span>
+      <span>Insérer la carte SIG du segment</span>
+      <span style="font-size:.62rem;opacity:.55">Export SIG BM ou capture — PNG / JPG</span>
+    </div>
+    <div class="cartelegende">
+      <div class="cleg"><div class="clegdot" style="background:var(--ax1)"></div>Tracé T10</div>
+      <div class="cleg"><div class="clegdot" style="background:var(--ax5)"></div>Écoles</div>
+      <div class="cleg"><div class="clegdot" style="background:var(--ax2)"></div>Espaces verts</div>
+      <div class="cleg"><div class="clegdot" style="background:var(--ax4)"></div>MRPA / santé</div>
+      <div class="cleg"><div class="clegdot" style="background:var(--usr)"></div>Commerces</div>
+      <div class="cleg"><div class="clegdot" style="background:var(--teal)"></div>SMV cyclable</div>
+    </div>
+  </div>
+
+  <!-- Données de base -->
+  <div class="fgrid">
+    <div class="ff"><div class="ffl">Identifiant</div><input class="ffi" id="f-id" readonly style="opacity:.7"></div>
+    <div class="ff"><div class="ffl">Arrêts encadrants</div><input class="ffi" id="f-arr" readonly style="opacity:.7"></div>
+    <div class="ff"><div class="ffl">Distance</div><input class="ffi" id="f-dst" readonly style="opacity:.7"></div>
+    <div class="ff"><div class="ffl">Date</div><input class="ffi" type="date" id="f-date"></div>
+    <div class="ff"><div class="ffl">Heure</div><input class="ffi" type="time"></div>
+    <div class="ff"><div class="ffl">Évaluateur</div><input class="ffi" type="text" placeholder="Nom · Fonction"></div>
+    <div class="ff"><div class="ffl">Météo</div>
+      <select class="ffi"><option value="">—</option><option>☀️ Ensoleillé</option><option>⛅ Nuageux</option><option>🌧️ Pluie légère</option><option>⛈️ Mauvais temps</option></select>
+    </div>
+    <div class="ff"><div class="ffl">Type de tronçon</div>
+      <select class="ffi">
+        <option value="">—</option>
+        <option>Tram — site propre intégral</option>
+        <option>Tram — voirie partagée</option>
+        <option>Tram — zone apaisée (30 km/h)</option>
+        <option>Prémétro — tunnel</option>
+        <option>Prémétro — station souterraine</option>
+        <option>Transition surface / tunnel</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- SMV -->
+  <div class="infoblock">
+    <div class="infotit">SMV — Spécialisation Multimodale des Voiries (identifier sur carte)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem 1.2rem;margin-bottom:.55rem;">
+      <!-- Colonne Piéton -->
+      <div>
+        <div style="font-family:var(--font-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--obs);font-weight:500;margin-bottom:.35rem;padding-bottom:.18rem;border-bottom:1px solid color-mix(in srgb,var(--obs) 18%,transparent);">🚶 Réseau piéton</div>
+        <div style="display:flex;flex-direction:column;gap:.22rem;">
+          <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Piéton Quartier <span style="font-size:.62rem;color:var(--muted)">(maillage local)</span></label>
+          <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Piéton Confort <span style="font-size:.62rem;color:var(--muted)">(axe structurant)</span></label>
+          <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Piéton Plus <span style="font-size:.62rem;color:var(--muted)">(niveau supérieur)</span></label>
+        </div>
+      </div>
+      <!-- Colonne Vélo -->
+      <div>
+        <div style="font-family:var(--font-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ax2);font-weight:500;margin-bottom:.35rem;padding-bottom:.18rem;border-bottom:1px solid color-mix(in srgb,var(--ax2) 18%,transparent);">🚲 Réseau cyclable</div>
+        <div style="display:flex;flex-direction:column;gap:.22rem;">
+          <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Vélo Quartier — ICR <span style="font-size:.62rem;color:var(--muted)">(double chevron)</span></label>
+          <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Vélos Confort <span style="font-size:.62rem;color:var(--muted)">(axe cyclable confort)</span></label>
+          <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Vélos Plus <span style="font-size:.62rem;color:var(--muted)">(axe cyclable supérieur)</span></label>
+        </div>
+      </div>
+    </div>
+    <!-- Autres modes -->
+    <div style="font-family:var(--font-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:.32rem;padding-bottom:.18rem;border-bottom:1px solid var(--border);">Autres modes</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.28rem .8rem;">
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Axe bus structurant</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Tram T10 NOH</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Prémétro / tunnel</label>
+    </div>
+  </div>
+
+  <!-- Pôles générateurs -->
+  <div class="infoblock">
+    <div class="infotit">Pôles générateurs à proximité de l'arrêt (cocher)</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.28rem .8rem;">
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> École primaire</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> École secondaire</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Parc / espace vert</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Aire de jeux</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Équipement de loisirs</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Centre sportif</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Commerces</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Maison de repos / MRPA</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Centre de santé / PMR</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Résidences (habitat)</label>
+    </div>
+  </div>
+
+  <!-- Profils observés -->
+  <div class="infoblock">
+    <div class="infotit">Profils d'usagers observés sur le segment</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.28rem .8rem;margin-bottom:.55rem;">
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Enfants</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Adolescents</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Adultes</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Seniors</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> PMR / fauteuil roulant</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Poussettes</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Cyclistes</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Livreurs</label>
+      <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Trottinettes</label>
+    </div>
+    <div style="padding-top:.45rem;border-top:1px dashed var(--border);">
+      <div class="infotit" style="margin-bottom:.32rem;">Répartition de genre observée</div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
+        <label style="display:flex;align-items:center;gap:.3rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="gobs"> Majorité hommes</label>
+        <label style="display:flex;align-items:center;gap:.3rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="gobs"> Majorité femmes</label>
+        <label style="display:flex;align-items:center;gap:.3rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="gobs"> Mixte équilibré</label>
+        <label style="display:flex;align-items:center;gap:.3rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="gobs"> Indéterminable</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     AX1 — CHEMINEMENTS
+════════════════════════════════ -->
+<div id="p-ax1" class="panel">
+  <div class="axhdr" style="--ac:var(--ax1)">
+    <div class="axnum" style="color:var(--ax1)">AX1</div>
+    <div>
+      <div class="axtitle">Cheminements piétons et cyclables</div>
+      <div class="axdesc">Qualité physique des cheminements — largeur, revêtement, continuité, séparation des flux. Ce que l'agent mesure et observe.</div>
+      <span class="axpill" style="--ac:var(--ax1)">Observateur — relevé technique</span>
+    </div>
+  </div>
+
+  <!-- Référentiel largeur -->
+  <div class="seclbl" style="--ac:var(--ax1)">Référentiel largeur trottoir — Cahier accessibilité piéton / PMR</div>
+  <div class="refbox">
+    <div class="rsi rs1"><div class="rsnum">1</div><div class="rslbl">Insuffisant</div><div class="rsval">&lt; 1,70 m</div><div class="rsdesc">En dessous du minimum. Passage PMR impossible, croisements bloqués.</div></div>
+    <div class="rsi rs2"><div class="rsnum">2</div><div class="rslbl">Satisfaisant</div><div class="rsval">1,70 – 2,00 m</div><div class="rsdesc">Minimum atteint. Passage PMR possible, croisements difficiles.</div></div>
+    <div class="rsi rs3"><div class="rsnum">3</div><div class="rslbl">Bon</div><div class="rsval">≥ 2,00 m</div><div class="rsdesc">Confort pour tous les profils, croisements fluides, mobilier possible.</div></div>
+  </div>
+
+  <div class="seclbl" style="--ac:var(--ax1)">1.A — Trottoir piéton</div>
+
+  <!-- AX1.A.1 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax1)">AX1.A.1</span></div>
+        <div class="ccname">Largeur utile libre du trottoir</div>
+        <div class="ccdesc">Largeur libre mesurée après déduction des obstacles (mobilier, végétation, stationnement). Retenir la valeur minimale observée sur le segment.</div>
+      </div>
+      <div class="sg" data-c="1A1"></div>
+    </div>
+    <div class="slabels"><div class="slv">&lt; 1,70 m</div><div class="slv">1,70 – 2,00 m</div><div class="slv">≥ 2,00 m</div><div class="slv"></div></div>
+    <div class="sn"><span class="snl">📏 Largeur min. (m)</span><input class="ni2" type="text" placeholder="ex. 1,40 m — noter aux points critiques"><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX1.A.2 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax1)">AX1.A.2</span></div>
+        <div class="ccname">Continuité et qualité du revêtement</div>
+        <div class="ccdesc">Le trottoir est-il continu sur tout le segment ? État de surface, planéité, absence d'affaissements ou de dalles instables. Critique pour PMR, seniors, poussettes.</div>
+      </div>
+      <div class="sg" data-c="1A2"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Problèmes de continuité / revêtement observés</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Rupture de trottoir (tronçon manquant)</label>
+        <label><input type="checkbox"> Dalles instables / soulevées</label>
+        <label><input type="checkbox"> Affaissements, nids-de-poule</label>
+        <label><input type="checkbox"> Revêtement glissant (mousse, humide)</label>
+        <label><input type="checkbox"> Dénivelés importants aux jonctions</label>
+        <label><input type="checkbox"> Obstacles permanents obstruant le passage</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Ruptures / dégradé</div><div class="slv">Quelques défauts</div><div class="slv">Continu, bon état</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Localisation précise des ruptures ou dégradations..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Obstacles ou détours mentionnés ?"></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX1.A.3 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax1)">AX1.A.3</span></div>
+        <div class="ccname">Plain-pied et guidage podotactile</div>
+        <div class="ccdesc">Plain-pied assuré aux traversées et accès ? Bandes podotactiles (éveil + guidage) présentes et continues aux traversées et arrêts de tram. Conformité cahier PMR.</div>
+      </div>
+      <div class="sg" data-c="1A3"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Situation observée — Plain-pied</div>
+      <div class="chkgrid" style="margin-bottom:.5rem;">
+        <label><input type="checkbox"> Abaissés de trottoir présents aux traversées</label>
+        <label><input type="checkbox"> Abaissés manquants ou non conformes</label>
+        <label><input type="checkbox"> Dénivelés entre trottoir et chaussée</label>
+        <label><input type="checkbox"> Marches / ressauts sans abaissé</label>
+      </div>
+      <div class="chklbl">Guidage podotactile</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Bandes d'éveil présentes aux traversées</label>
+        <label><input type="checkbox"> Bandes de guidage présentes</label>
+        <label><input type="checkbox"> Podotactile absent aux arrêts</label>
+        <label><input type="checkbox"> Podotactile dégradé / illisible</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Dénivelés / absent</div><div class="slv">Partiel, lacunes</div><div class="slv">Plain-pied + podotactile conforme</div><div class="slv"></div></div>
+    <div class="sn"><span class="snl">👁 Obs.</span><input class="ni2" type="text" placeholder="Localisation précise des lacunes..."><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX1.A.4 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax1)">AX1.A.4</span></div>
+        <div class="ccname">Traversées piétonnes — matérialisation et sécurité</div>
+        <div class="ccdesc">Qualité des traversées : trottoir traversant (chaussée surélevée, priorité visuelle au piéton), zone de rencontre (piéton prioritaire), marquage au sol, abaissés de trottoir. La matérialisation est la première garantie de sécurité piétonne.</div>
+      </div>
+      <div class="sg" data-c="1A4"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Type(s) de matérialisation présents</div>
+      <div class="chkgrid" style="margin-bottom:.5rem;">
+        <label><input type="checkbox"> Trottoir traversant (chaussée surélevée)</label>
+        <label><input type="checkbox"> Zone de rencontre (piéton prioritaire)</label>
+        <label><input type="checkbox"> Passage piéton — marquage au sol</label>
+        <label><input type="checkbox"> Feux tricolores piétons</label>
+        <label><input type="checkbox"> Îlot refuge central</label>
+        <label><input type="checkbox"> Aucune matérialisation</label>
+      </div>
+      <div class="chklbl">Problèmes observés</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Marquage effacé, illisible</label>
+        <label><input type="checkbox"> Traversée sans visibilité suffisante</label>
+        <label><input type="checkbox"> Vitesse des véhicules non adaptée</label>
+        <label><input type="checkbox"> Traversée trop longue (largeur chaussée)</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Aucune / dangereuse</div><div class="slv">Insuffisante</div><div class="slv">Bien matérialisée</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Nombre de traversées, localisation, type retenu..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Sécurité aux traversées ressentie, temps d'attente..."></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <div class="seclbl" style="--ac:var(--ax1)">1.B — Réseau cyclable</div>
+
+  <!-- AX1.B.1 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax1)">AX1.B.1</span></div>
+        <div class="ccname">Infrastructure cyclable — type, qualité et cohérence SMV</div>
+        <div class="ccdesc">Type d'aménagement : piste séparée, bande cyclable, ICR (double chevron sol — petits axes), voirie apaisée. Cohérence avec le SMV identifié en AX0 (ICR / Vélos Plus / Vélos Confort — trois réseaux distincts).</div>
+      </div>
+      <div class="sg" data-c="1B1"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Type d'infrastructure cyclable présente</div>
+      <div class="chkgrid" style="margin-bottom:.5rem;">
+        <label><input type="checkbox"> Piste cyclable séparée (aménagement physique)</label>
+        <label><input type="checkbox"> Bande cyclable (marquage au sol uniquement)</label>
+        <label><input type="checkbox"> ICR — double chevron au sol</label>
+        <label><input type="checkbox"> Zone de rencontre (cycliste admis)</label>
+        <label><input type="checkbox"> Aucune infrastructure cyclable</label>
+      </div>
+      <div class="chklbl">Qualité et problèmes</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Marquage effacé ou illisible</label>
+        <label><input type="checkbox"> Largeur insuffisante</label>
+        <label><input type="checkbox"> Interruption / rupture de continuité</label>
+        <label><input type="checkbox"> Conflit avec stationnement ou livraison</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Absente</div><div class="slv">Marquage seul / partielle</div><div class="slv">Séparée, cohérente SMV</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="SMV correspondant (ICR / Vélos+ / Confort), largeur, état..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Sécurité ressentie pour les cyclistes ?"></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX1.B.2 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax1)">AX1.B.2</span></div>
+        <div class="ccname">Stationnement vélo / arceaux vélo aux abords de la ligne du Tram 10 NOH</div>
+        <div class="ccdesc">Y a-t-il des arceaux vélo à proximité des arrêts ? En nombre suffisant ? Accessibles ? C'est la condition de l'intermodalité vélo-tram. Observer aussi les pratiques de stationnement sauvage.</div>
+      </div>
+      <div class="sg" data-c="1B2"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Présence d'arceaux vélo</div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:.5rem;">
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="arceau"> Oui</label>
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="arceau"> Non</label>
+      </div>
+      <div class="chklbl">Si oui — évaluation</div>
+      <div class="chkgrid" style="margin-bottom:.5rem;">
+        <label><input type="checkbox"> Nombre suffisant pour la demande</label>
+        <label><input type="checkbox"> Accessibles sans obstacle</label>
+        <label><input type="checkbox"> En bon état</label>
+        <label><input type="checkbox"> Nombre insuffisant (saturés)</label>
+      </div>
+      <div class="chklbl">Observation — stationnement sauvage de vélos</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Vélos attachés aux poteaux / mobilier urbain</label>
+        <label><input type="checkbox"> Vélos abandonnés sur trottoir</label>
+        <label><input type="checkbox"> Vélos obstruant le passage piéton</label>
+        <label><input type="checkbox"> Concentration de vélos sans arceau identifié</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Absents</div><div class="slv">Présents, insuffisants</div><div class="slv">Suffisants, bien placés</div><div class="slv"></div></div>
+    <div class="sn"><span class="snl">👁 Obs.</span><input class="ni2" type="text" placeholder="Nombre d'arceaux, taux d'occupation, localisation stationnement sauvage..."><button class="pb">📷</button></div>
+  </div>
+
+  <div class="seclbl" style="--ac:var(--ax1)">1.C — Séparation des flux et conflits d'usage</div>
+
+  <!-- AX1.C.1 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax1)">AX1.C.1</span></div>
+        <div class="ccname">Séparation piétons / cyclistes / voitures / tram</div>
+        <div class="ccdesc">Les différents flux sont-ils distinguables et séparés ? Les espaces piétons et cyclables sont-ils clairement distingués des voies de circulation par des marquages au sol visibles ou des aménagements physiques ?</div>
+      </div>
+      <div class="sg" data-c="1C1"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Séparations présentes sur ce segment</div>
+      <div class="chkgrid" style="margin-bottom:.5rem;">
+        <label><input type="checkbox"> Trottoir surélevé séparé de la chaussée</label>
+        <label><input type="checkbox"> Piste cyclable séparée physiquement</label>
+        <label><input type="checkbox"> Marquages au sol visibles et lisibles</label>
+        <label><input type="checkbox"> Bordures / mobilier de séparation</label>
+        <label><input type="checkbox"> Site propre tram clairement délimité</label>
+        <label><input type="checkbox"> Zone piétonne / voirie apaisée</label>
+      </div>
+      <div class="chklbl">Problèmes de lisibilité observés</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Marquages effacés ou illisibles</label>
+        <label><input type="checkbox"> Flux mélangés sur le même espace</label>
+        <label><input type="checkbox"> Confusion piéton / cycliste / voiture</label>
+        <label><input type="checkbox"> Absence de tout séparateur</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Espace indifférencié</div><div class="slv">Partiellement séparé</div><div class="slv">Clairement séparé</div><div class="slv"></div></div>
+    <div class="sn"><span class="snl">👁 Obs.</span><input class="ni2" type="text" placeholder="Types de marquages / séparateurs observés, zones de confusion..."><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX1.C.2 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax1)">AX1.C.2</span></div>
+        <div class="ccname">Conflits d'usage et empiètements</div>
+        <div class="ccdesc">Y a-t-il des conflits entre usagers ou des empiètements sur les cheminements ? Cocher les types observés.</div>
+      </div>
+      <div class="sg" data-c="1C2"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Types de conflits / empiètements observés</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Stationnement voitures sur trottoir</label>
+        <label><input type="checkbox"> Livraisons / camions sur cheminements</label>
+        <label><input type="checkbox"> Cyclistes / piétons — espace partagé</label>
+        <label><input type="checkbox"> Trottinettes sur trottoir</label>
+        <label><input type="checkbox"> Poubelles / mobilier obstruant</label>
+        <label><input type="checkbox"> Végétation débordante</label>
+        <label><input type="checkbox"> Travaux sans déviations</label>
+        <label><input type="checkbox"> PMR bloqués</label>
+      </div>
+      <div style="display:flex;align-items:center;gap:.45rem;margin-top:.38rem;">
+        <span style="font-family:var(--font-mono);font-size:.53rem;color:var(--muted);white-space:nowrap;">Autre :</span>
+        <input class="other-input" type="text" placeholder="Préciser...">
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Conflits fréquents</div><div class="slv">Ponctuels</div><div class="slv">Aucun / marginal</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Localisation, fréquence, impact sur largeur utile..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Gêne ressentie, situations problématiques vécues..."></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     AX2 — CONNEXIONS AUX PÔLES
+════════════════════════════════ -->
+<div id="p-ax2" class="panel">
+  <div class="axhdr" style="--ac:var(--ax2)">
+    <div class="axnum" style="color:var(--ax2)">AX2</div>
+    <div>
+      <div class="axtitle">Connexions aux pôles générateurs</div>
+      <div class="axdesc">Le tram vaut par ce à quoi il donne accès. Évaluer la qualité du rabattement piéton et cyclable depuis l'arrêt vers les pôles identifiés en AX0.</div>
+      <span class="axpill" style="--ac:var(--ax2)">Observateur + Usager + données SIG</span>
+    </div>
+  </div>
+
+  <div class="seclbl" style="--ac:var(--ax2)">2.A — Rabattement depuis les quartiers vers l'arrêt</div>
+
+  <!-- AX2.A.2 → renommé AX2.A.1 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX2.A.1</span></div>
+        <div class="ccname">Rabattement piéton depuis les quartiers riverains</div>
+        <div class="ccdesc">Qualité des connexions depuis les quartiers vers les arrêts — des deux côtés de la voirie. Tracé direct ? Obstacles ? La situation périphérique du T10 NOH rend ce rabattement critique.</div>
+      </div>
+      <div class="sg" data-c="2A2"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Connexion des deux côtés de la voirie</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.28rem .7rem;margin-bottom:.5rem;">
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Côté pair accessible directement</label>
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Côté impair accessible directement</label>
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Traversée sécurisée pour rejoindre l'arrêt</label>
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="checkbox"> Signalétique vers l'arrêt depuis les quartiers</label>
+      </div>
+      <div class="chklbl">Obstacles au rabattement</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Voirie à fort trafic difficile à traverser</label>
+        <label><input type="checkbox"> Rupture de trottoir / cheminement absent</label>
+        <label><input type="checkbox"> Dénivelé important (escaliers sans rampe)</label>
+        <label><input type="checkbox"> Distance excessive depuis les quartiers proches</label>
+        <label><input type="checkbox"> Passage sous voie / tunnel peu sécurisé</label>
+        <label><input type="checkbox"> Cheminement peu éclairé le soir</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Coupé / indirect</div><div class="slv">Possible, améliorable</div><div class="slv">Direct, de qualité</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Quartiers connectés, distances, obstacles principaux..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Chemin habituel, détours empruntés, satisfaction..."></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <div class="seclbl" style="--ac:var(--ax2)">2.B — Accès aux pôles spécifiques</div>
+
+  <!-- AX2.B.1 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX2.B.1</span></div>
+        <div class="ccname">Accès aux établissements scolaires</div>
+        <div class="ccdesc">Qualité et sécurité du trajet piéton/vélo entre l'arrêt et les écoles proches. Les élèves viennent de quartiers différents et le trajet arrêt–école est un enjeu de sécurité central du projet T10 NOH.</div>
+      </div>
+      <div class="sg" data-c="2B1"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Y a-t-il une école à proximité de cet arrêt ?</div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:.5rem;">
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="ecole"> Oui — école primaire</label>
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="ecole"> Oui — école secondaire</label>
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="ecole"> Non</label>
+      </div>
+      <div class="chklbl">Qualité du trajet arrêt → école</div>
+      <div class="chkgrid" style="margin-bottom:.5rem;">
+        <label><input type="checkbox"> Trajet direct, sans traversée dangereuse</label>
+        <label><input type="checkbox"> Trottoir continu et suffisamment large</label>
+        <label><input type="checkbox"> Traversée(s) sécurisée(s) sur le trajet</label>
+        <label><input type="checkbox"> Zone scolaire signalée (30 km/h, signalétique)</label>
+      </div>
+      <div class="chklbl">Problèmes observés</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Voirie à fort trafic sur le trajet</label>
+        <label><input type="checkbox"> Traversée dangereuse obligatoire</label>
+        <label><input type="checkbox"> Trottoir trop étroit (enfants avec sacs)</label>
+        <label><input type="checkbox"> Stationnement sauvage devant l'école</label>
+        <label><input type="checkbox"> Absence de zone de dépose sécurisée</label>
+        <label><input type="checkbox"> Éclairage insuffisant (trajet sombre le matin)</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Dangereux / coupé</div><div class="slv">Difficile, non sécurisé</div><div class="slv">Direct et sécurisé</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Écoles proches, distance estimée, obstacles..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Parents / élèves : sécurité du trajet vécue ?"></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX2.B.2 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX2.B.2</span></div>
+        <div class="ccname">Accès aux équipements PMR, santé et maisons de repos</div>
+        <div class="ccdesc">L'autonomie des résidents de MRPA et des patients pour atteindre l'arrêt de tram est un indicateur clé d'accessibilité réelle. Le cheminement permet-il un usage en fauteuil roulant sans aide ?</div>
+      </div>
+      <div class="sg" data-c="2B2"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Y a-t-il un équipement MRPA / santé à proximité ?</div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:.5rem;">
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="mrpa"> Oui — maison de repos / MRPA</label>
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="mrpa"> Oui — centre de santé / PMR</label>
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="mrpa"> Non</label>
+      </div>
+      <div class="chklbl">Accessibilité du trajet en autonomie</div>
+      <div class="chkgrid" style="margin-bottom:.5rem;">
+        <label><input type="checkbox"> Trajet en fauteuil possible sans aide</label>
+        <label><input type="checkbox"> Plain-pied total sur tout le trajet</label>
+        <label><input type="checkbox"> Largeur suffisante pour fauteuil (≥ 1,70 m)</label>
+        <label><input type="checkbox"> Traversée(s) accessible(s) en fauteuil</label>
+      </div>
+      <div class="chklbl">Obstacles à l'autonomie</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Marches ou dénivelés sur le trajet</label>
+        <label><input type="checkbox"> Trottoir trop étroit pour fauteuil</label>
+        <label><input type="checkbox"> Traversée sans abaissé de trottoir</label>
+        <label><input type="checkbox"> Revêtement inadapté (gravillons, pavés irréguliers)</label>
+        <label><input type="checkbox"> Distance trop longue pour la marche</label>
+        <label><input type="checkbox"> Absence de bancs intermédiaires pour se reposer</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Inaccessible PMR</div><div class="slv">Difficile, aide nécessaire</div><div class="slv">Accessible en autonomie</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Équipements proches, distance, obstacles principaux..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Témoignages résidents / accompagnants / soignants..."></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX2.B.3 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX2.B.3</span></div>
+        <div class="ccname">Accès aux parcs, aires de jeux et équipements sportifs</div>
+        <div class="ccdesc">Continuité et qualité du cheminement depuis l'arrêt vers les espaces verts et loisirs proches. La transition espace de transport → espace de détente est-elle fluide ?</div>
+      </div>
+      <div class="sg" data-c="2B3"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Y a-t-il un parc / espace vert / équipement de loisirs à proximité ?</div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:.5rem;">
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="parc"> Oui</label>
+        <label style="display:flex;align-items:center;gap:.32rem;font-size:.74rem;cursor:pointer;"><input type="radio" name="parc"> Non</label>
+      </div>
+      <div class="chklbl">Qualité de la connexion</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Accès direct depuis l'arrêt (sans détour)</label>
+        <label><input type="checkbox"> Cheminement agréable, bien entretenu</label>
+        <label><input type="checkbox"> Signalétique indiquant le parc depuis l'arrêt</label>
+        <label><input type="checkbox"> Accessible avec poussette / fauteuil</label>
+        <label><input type="checkbox"> Trajet peu sécurisé (traversée, trafic)</label>
+        <label><input type="checkbox"> Absence de signalétique</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Coupé / introuvable</div><div class="slv">Indirect, peu attractif</div><div class="slv">Direct, agréable</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Espaces proches, distance, qualité du cheminement..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Y va-t-on à pied depuis l'arrêt ? Facilement ?"></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX2.B.4 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX2.B.4</span></div>
+        <div class="ccname">Signalétique vers les pôles générateurs</div>
+        <div class="ccdesc">Y a-t-il des indications vers les pôles générateurs pour les modes actifs — écoles, parcs, commerces, maisons de repos, autres arrêts TC ? L'usager peut-il se repérer sans smartphone ?</div>
+      </div>
+      <div class="sg" data-c="2B4"></div>
+    </div>
+    <div class="slabels"><div class="slv">Aucune indication</div><div class="slv">Partielle, incomplète</div><div class="slv">Claire vers les pôles clés</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Panneaux présents, destinations indiquées, lacunes..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Se repère-t-il ? Recours au téléphone ?"></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     AX3 — CONFORT & ESPACE PUBLIC
+════════════════════════════════ -->
+<div id="p-ax3" class="panel">
+  <div class="axhdr" style="--ac:var(--ax2)">
+    <div class="axnum" style="color:var(--ax2)">AX3</div>
+    <div>
+      <div class="axtitle">Confort et qualité de l'espace public</div>
+      <div class="axdesc">L'espace est-il agréable à traverser ? Invite-t-il à s'arrêter, à se poser ? Végétation, mobilier, éclairage, entretien — ce qui conditionne l'usage réel.</div>
+      <span class="axpill" style="--ac:var(--ax2)">Observateur + Usager</span>
+    </div>
+  </div>
+
+  <div class="seclbl" style="--ac:var(--ax2)">3.A — Végétalisation et mobilier</div>
+
+  <!-- AX3.A.1 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX3.A.1</span></div>
+        <div class="ccname">Végétalisation — équilibre bâti / non-bâti</div>
+        <div class="ccdesc">La végétation est-elle suffisamment présente pour créer un équilibre entre bâti et non-bâti ? Cocher les éléments présents, puis évaluer la qualité d'ensemble.</div>
+      </div>
+      <div class="sg" data-c="3A1"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Éléments de végétalisation présents</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Arbres de rue — ombrage continu</label>
+        <label><input type="checkbox"> Haies / arbustes</label>
+        <label><input type="checkbox"> Jardinières / bacs plantés</label>
+        <label><input type="checkbox"> Pelouses / espaces enherbés</label>
+        <label><input type="checkbox"> Façades végétalisées</label>
+        <label><input type="checkbox"> Aucune végétation — espace minéral</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Espace minéral</div><div class="slv">Végétation rare</div><div class="slv">Équilibre satisfaisant</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Continuité, état, zones manquantes, estimation linéaire..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Manque de verdure ou d'ombre signalé ?"></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX3.A.2 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX3.A.2</span></div>
+        <div class="ccname">Mobilier urbain</div>
+        <div class="ccdesc">Y a-t-il suffisamment de bancs pour se reposer le long des cheminements ? Abris, corbeilles. Crucial pour seniors, PMR, enfants, femmes enceintes — ceux qui ne peuvent pas marcher longtemps sans pause.</div>
+      </div>
+      <div class="sg" data-c="3A2"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Mobilier urbain présent</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Bancs / assises en nombre suffisant</label>
+        <label><input type="checkbox"> Abris pluie / soleil</label>
+        <label><input type="checkbox"> Corbeilles de propreté</label>
+        <label><input type="checkbox"> Fontaine / point d'eau</label>
+        <label><input type="checkbox"> Éclairage public fonctionnel</label>
+        <label><input type="checkbox"> Aucun mobilier</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Absent</div><div class="slv">Insuffisant / mal placé</div><div class="slv">Bien distribué</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Nombre de bancs, espacement, état, emplacement..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Besoin de repos signalé ? Endroits pour s'asseoir manquants ?"></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <div class="seclbl" style="--ac:var(--ax2)">3.B — Usage et animation de l'espace</div>
+
+  <!-- AX3.B.1 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX3.B.1</span></div>
+        <div class="ccname">Espace de transit ou espace de vie ?</div>
+        <div class="ccdesc">Le cheminement est-il uniquement fonctionnel (traverser, marcher) ou propose-t-il aussi des espaces pour s'arrêter, se poser, se rencontrer ? Un espace de vie génère plus d'usages modes actifs qu'un simple couloir.</div>
+      </div>
+      <div class="sg" data-c="3B1"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Signes d'appropriation et de vie observés</div>
+      <div class="chkgrid" style="margin-bottom:.5rem;">
+        <label><input type="checkbox"> Personnes assises, en pause spontanée</label>
+        <label><input type="checkbox"> Rencontres, conversations dans l'espace</label>
+        <label><input type="checkbox"> Enfants jouant dans l'espace public</label>
+        <label><input type="checkbox"> Commerces animés, terrasses</label>
+        <label><input type="checkbox"> Usagers qui s'attardent volontiers</label>
+        <label><input type="checkbox"> Présence diverse (âges, profils)</label>
+      </div>
+      <div class="chklbl">Caractère de l'espace</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Espace uniquement de passage, sans vie</label>
+        <label><input type="checkbox"> Flux rapide, personne ne s'arrête</label>
+        <label><input type="checkbox"> Espace froid, peu invitant</label>
+        <label><input type="checkbox"> Absence de mobilier pour se poser</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Transit pur</div><div class="slv">Quelques espaces de pause</div><div class="slv">Espace de vie habité</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Usages spontanés observés, ambiance générale..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="S'arrête-t-on volontiers ? L'espace est-il agréable ?"></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX3.B.2 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX3.B.2</span></div>
+        <div class="ccname">Absence de murs aveugles — passages actifs</div>
+        <div class="ccdesc">Les rez-de-chaussée sont-ils actifs et transparents, ou composés de murs aveugles, rideaux fermés, clôtures ? Les passages actifs (commerces ouverts, façades transparentes) animent l'espace et renforcent le sentiment de sécurité.</div>
+      </div>
+      <div class="sg" data-c="3B2"></div>
+    </div>
+    <div class="slabels"><div class="slv">Murs aveugles dominants</div><div class="slv">Mix actif / aveugle</div><div class="slv">Passages actifs dominants</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Linéaire murs aveugles vs actifs, type activité rdc..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Tronçon vécu comme agréable ou hostile ?"></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <div class="seclbl" style="--ac:var(--ax2)">3.C — Propreté, entretien et espaces résiduels</div>
+
+  <!-- AX3.C.1 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX3.C.1</span></div>
+        <div class="ccname">Propreté et entretien de l'espace public</div>
+        <div class="ccdesc">L'espace est-il propre et entretenu ? Dépôts sauvages, tags, dégradations du mobilier, végétation non entretenue. La qualité de l'entretien reflète le soin apporté à l'espace et conditionne son usage.</div>
+      </div>
+      <div class="sg" data-c="3C1"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Problèmes d'entretien observés</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Dépôts de déchets sauvages</label>
+        <label><input type="checkbox"> Tags / graffitis sur mobilier</label>
+        <label><input type="checkbox"> Mobilier dégradé ou vandalisé</label>
+        <label><input type="checkbox"> Végétation non entretenue / envahissante</label>
+        <label><input type="checkbox"> Flaques / eaux stagnantes</label>
+        <label><input type="checkbox"> Éclairage public défaillant</label>
+        <label><input type="checkbox"> Revêtement non entretenu (herbes dans fentes)</label>
+        <label><input type="checkbox"> Signalétique dégradée / illisible</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Très dégradé</div><div class="slv">Entretien variable</div><div class="slv">Propre et entretenu</div><div class="slv"></div></div>
+    <div class="sn"><span class="snl">👁 Obs.</span><input class="ni2" type="text" placeholder="Localisation des problèmes d'entretien principaux..."><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX3.C.2 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax2)">AX3.C.2</span></div>
+        <div class="ccname">Espaces résiduels mobilisables</div>
+        <div class="ccdesc">Y a-t-il des espaces résiduels, sous-exploités ou vacants qui pourraient être mobilisés comme opportunités pour répondre aux besoins identifiés — assises, végétalisation, jeux, stationnement vélo ?</div>
+      </div>
+      <div class="sg" data-c="3C2"></div>
+    </div>
+    <div class="slabels"><div class="slv">Aucun potentiel</div><div class="slv">Potentiel limité</div><div class="slv">Fort potentiel</div><div class="slv"></div></div>
+    <div class="sn"><span class="snl">👁 Obs.</span><input class="ni2" type="text" placeholder="Localisation, surface, usage envisageable (bancs, vélo, végétal...)"><button class="pb">📷</button></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     AX4 — SÉCURITÉ & VÉCU
+════════════════════════════════ -->
+<div id="p-ax4" class="panel">
+  <div class="axhdr" style="--ac:var(--ax4)">
+    <div class="axnum" style="color:var(--ax4)">AX4</div>
+    <div>
+      <div class="axtitle">Sécurité subjective & vécu des usagers</div>
+      <div class="axdesc">Le sentiment de sécurité est-il naturellement présent ? Identifier les facteurs d'insécurité — notamment pour les femmes, les filles, les enfants et les personnes âgées.</div>
+      <span class="axpill" style="--ac:var(--ax4)">Observateur + Usager — dimension genre intégrée</span>
+    </div>
+  </div>
+
+  <div class="seclbl" style="--ac:var(--ax4)">4.A — Sentiment de sécurité</div>
+
+  <!-- AX4.A.1 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax4)">AX4.A.1</span><span class="gtag">♀ Genre</span></div>
+        <div class="ccname">Sentiment général de sécurité sur le cheminement</div>
+        <div class="ccdesc">Se sent-on en sécurité, visible, à l'aise sur ce tronçon ? Cette évaluation est genrée : certains espaces sont évités par des profils spécifiques selon l'heure.</div>
+      </div>
+      <div class="sg" data-c="4A1"></div>
+    </div>
+    <div class="slabels"><div class="slv">Anxiogène</div><div class="slv">Inconfort notable</div><div class="slv">Sûr et ouvert</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Éléments physiques d'inconfort : zones sombres, angles morts, isolement..."></div>
+      <div class="dz"><div class="dzh"><span class="zt g">♀ Genre</span></div><input class="ni" type="text" placeholder="Certains profils évitent-ils ce tronçon ? À quelle heure ? Pourquoi ?"></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX4.A.2 — Facteurs d'insécurité détaillés -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax4)">AX4.A.2</span><span class="gtag">♀ Genre</span></div>
+        <div class="ccname">Facteurs d'insécurité identifiés</div>
+        <div class="ccdesc">Cocher les facteurs observés ou mentionnés. La note reflète l'impact combiné sur l'usage réel — pas le nombre de facteurs.</div>
+      </div>
+      <div class="sg" data-c="4A2"></div>
+    </div>
+
+    <!-- Règle de notation -->
+    <div style="margin:.1rem 1rem .6rem;background:color-mix(in srgb,var(--ax4) 6%,white);border:1px solid color-mix(in srgb,var(--ax4) 18%,transparent);border-radius:5px;padding:.6rem .8rem;">
+      <div style="font-family:var(--font-mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ax4);font-weight:500;margin-bottom:.4rem;">Comment noter ?</div>
+      <div style="display:grid;grid-template-columns:36px 1fr;gap:.35rem .6rem;align-items:start;">
+        <div style="font-family:var(--font-mono);font-size:.72rem;font-weight:700;color:var(--s1);text-align:center;margin-top:.05rem;">1</div>
+        <div style="font-size:.71rem;line-height:1.45;">L'espace est <strong>évité ou utilisé avec vigilance accrue</strong> par certains profils (femmes seules, enfants, seniors) à certaines heures. Plusieurs facteurs convergent et leur impact sur l'usage est concret et observable.</div>
+        <div style="font-family:var(--font-mono);font-size:.72rem;font-weight:700;color:var(--s2);text-align:center;margin-top:.05rem;">2</div>
+        <div style="font-size:.71rem;line-height:1.45;">Un ou deux facteurs identifiés, mais <strong>l'espace reste fréquenté</strong>. L'usager ressent un inconfort sans que cela génère un évitement systématique. Aucun profil n'est exclu de fait.</div>
+        <div style="font-family:var(--font-mono);font-size:.72rem;font-weight:700;color:var(--s3);text-align:center;margin-top:.05rem;">3</div>
+        <div style="font-size:.71rem;line-height:1.45;">Aucun facteur d'insécurité identifié. <strong>L'espace est perçu comme sûr par tous les profils</strong>, à toutes les heures. Pas de comportement d'évitement observé ou signalé.</div>
+      </div>
+    </div>
+
+    <!-- Facteurs objectifs -->
+    <div class="chkblock">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 1.2rem;">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--obs);font-weight:500;margin-bottom:.35rem;padding-bottom:.2rem;border-bottom:1px solid color-mix(in srgb,var(--obs) 18%,transparent);">👁 Facteurs objectifs — ce que l'agent observe</div>
+          <div style="display:flex;flex-direction:column;gap:.22rem;">
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Éclairage absent sur une zone du tronçon</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Intensité lumineuse insuffisante le soir</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Zones d'ombre entre lampadaires</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Lampadaires défaillants ou vandalisés</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Absence de fenêtres / portes en front de rue</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Angles morts, recoins sans visibilité</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Passage sous-voie ou tunnel isolé</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Végétation dense masquant la vue</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Traversée dangereuse sur le trajet</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Absence de sortie / chemin de fuite visible</label>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--genre);font-weight:500;margin-bottom:.35rem;padding-bottom:.2rem;border-bottom:1px solid color-mix(in srgb,var(--genre) 18%,transparent);">♀ Facteurs subjectifs — vécu, ressenti, entretiens</div>
+          <div style="display:flex;flex-direction:column;gap:.22rem;">
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Vide, absence de présence humaine</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Sentiment de silence, d'isolement</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Impression d'être surveillé / exposé</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Occupation masculine dominante de l'espace</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Groupes intimidants signalés ou observés</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Comportements agressifs ou harcelants signalés</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Trafic motorisé rapide créant de l'insécurité</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Espace évité le soir par les femmes / filles</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Espace évité par les enfants seuls</label>
+            <label style="display:flex;align-items:flex-start;gap:.32rem;font-size:.74rem;cursor:pointer;line-height:1.35;"><input type="checkbox" style="margin-top:2px;flex-shrink:0;"> Espace évité par les seniors</label>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.45rem;margin-top:.45rem;padding-top:.4rem;border-top:1px dashed var(--border);">
+        <span style="font-family:var(--font-mono);font-size:.53rem;color:var(--muted);white-space:nowrap;">Autre facteur :</span>
+        <input class="other-input" type="text" placeholder="Préciser...">
+      </div>
+    </div>
+
+    <div class="slabels"><div class="slv">Usage évité / vigilance forte</div><div class="slv">Inconfort présent</div><div class="slv">Aucun facteur identifié</div><div class="slv"></div></div>
+    <div class="taz">
+      <div class="talbl"><span class="zt g">♀ Observation genre</span></div>
+      <textarea class="ta" placeholder="Comportements d'évitement observés, horaires concernés, profils absents, témoignages directs sur l'insécurité. Croiser facteurs objectifs et subjectifs cochés ci-dessus."></textarea>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <div class="seclbl" style="--ac:var(--ax4)">4.B — Accessibilité pour les profils vulnérables</div>
+
+  <!-- AX4.B.1 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax4)">AX4.B.1</span></div>
+        <div class="ccname">Accessibilité réelle pour les profils vulnérables</div>
+        <div class="ccdesc">Au-delà de la norme technique (AX1), l'usage autonome est-il réellement possible pour : personnes en fauteuil roulant, avec caddie, femmes enceintes, avec poussette, personnes âgées, déficience visuelle ? Vers tous les pôles (maison, école, commerce, parc, maison de repos, centre de santé) ?</div>
+      </div>
+      <div class="sg" data-c="4B1"></div>
+    </div>
+    <div class="chkblock">
+      <div class="chklbl">Profils pour lesquels des difficultés sont observées</div>
+      <div class="chkgrid" style="margin-bottom:.5rem;">
+        <label><input type="checkbox"> Fauteuil roulant</label>
+        <label><input type="checkbox"> Personne avec caddie</label>
+        <label><input type="checkbox"> Femme enceinte</label>
+        <label><input type="checkbox"> Poussette / landau</label>
+        <label><input type="checkbox"> Personne âgée (marche lente)</label>
+        <label><input type="checkbox"> Déficience visuelle</label>
+        <label><input type="checkbox"> Enfant seul</label>
+        <label><input type="checkbox"> Personne avec bagages lourds</label>
+      </div>
+      <div class="chklbl">Destinations pour lesquelles le trajet est difficile</div>
+      <div class="chkgrid">
+        <label><input type="checkbox"> Vers la maison / résidence</label>
+        <label><input type="checkbox"> Vers l'école</label>
+        <label><input type="checkbox"> Vers les commerces</label>
+        <label><input type="checkbox"> Vers le parc / espace vert</label>
+        <label><input type="checkbox"> Vers la maison de repos</label>
+        <label><input type="checkbox"> Vers le centre de santé</label>
+      </div>
+    </div>
+    <div class="slabels"><div class="slv">Excluant pour plusieurs profils</div><div class="slv">Difficultés ponctuelles</div><div class="slv">Accessible pour tous</div><div class="slv"></div></div>
+    <div class="dual">
+      <div class="dz"><div class="dzh"><span class="zt obs">👁 Obs.</span></div><input class="ni" type="text" placeholder="Situations d'exclusion observées, comportements de contournement..."></div>
+      <div class="dz"><div class="dzh"><span class="zt usr">💬 Usager</span></div><input class="ni" type="text" placeholder="Difficultés signalées par les profils vulnérables eux-mêmes..."></div>
+    </div>
+    <div class="sn"><button class="pb">📷</button></div>
+  </div>
+
+  <!-- AX4.B.2 -->
+  <div class="cc">
+    <div class="cctop">
+      <div>
+        <div class="ccmeta"><span class="cccode" style="color:var(--ax4)">AX4.B.2</span></div>
+        <div class="ccname">Diversité et appropriation de l'espace</div>
+        <div class="ccdesc">L'espace est-il utilisé par une diversité de profils (âge, genre, mobilité) ? Une mono-fréquentation (ex. uniquement des hommes) signale un espace socialement défaillant. Croiser avec la répartition de genre notée en AX0.</div>
+      </div>
+      <div class="sg" data-c="4B2"></div>
+    </div>
+    <div class="slabels"><div class="slv">Mono-profil</div><div class="slv">Diversité partielle</div><div class="slv">Grande diversité</div><div class="slv"></div></div>
+    <div class="sn"><span class="snl">👁 Obs.</span><input class="ni2" type="text" placeholder="Profils présents, absences notables, heure, hypothèses..."><button class="pb">📷</button></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     AX5 — RECOMMANDATIONS
+════════════════════════════════ -->
+<div id="p-ax5" class="panel">
+  <div class="axhdr" style="--ac:var(--ax5)">
+    <div class="axnum" style="color:var(--ax5)">AX5</div>
+    <div>
+      <div class="axtitle">Recommandations hiérarchisées</div>
+      <div class="axdesc">Hiérarchiser les actions. Outil de décision pour BM.</div>
+      <span class="axpill" style="--ac:var(--ax5)">Observateur + analyse projets BM</span>
+    </div>
+  </div>
+
+  <div class="cc">
+    <div class="cctop"><div><div class="ccmeta"><span class="cccode" style="color:var(--s1)">🔴 Priorité haute</span></div><div class="ccname">À corriger urgemment</div><div class="ccdesc">Sécurité bloquée, accessibilité impossible, ruptures critiques.</div></div></div>
+    <div class="taz"><textarea class="ta" placeholder="Actions concrètes, localisation précise, responsable (BM / commune)..."></textarea></div>
+  </div>
+
+  <div class="cc">
+    <div class="cctop"><div><div class="ccmeta"><span class="cccode" style="color:var(--s2)">🟠 Priorité moyenne</span></div><div class="ccname">À planifier</div><div class="ccdesc">Améliorations intégrables dans les prochains cycles d'entretien ou projets programmés.</div></div></div>
+    <div class="taz"><textarea class="ta" placeholder="Actions, intégration dans quel projet BM, délai estimé..."></textarea></div>
+  </div>
+
+  <div class="cc">
+    <div class="cctop"><div><div class="ccmeta"><span class="cccode" style="color:#B8860B">⚡ Quick wins</span></div><div class="ccname">Faible coût, impact rapide</div><div class="ccdesc">Arceaux vélo, bancs, signalétique, éclairage d'appoint, marquage de traversée.</div></div></div>
+    <div class="taz"><textarea class="ta" placeholder="Actions concrètes, coût estimé, responsable..."></textarea></div>
+  </div>
+
+  <div class="cc">
+    <div class="cctop"><div><div class="ccmeta"><span class="cccode" style="color:var(--s3)">🟢 À valoriser</span></div><div class="ccname">Bonnes pratiques à reproduire</div><div class="ccdesc">Ce qui fonctionne bien sur ce segment — à maintenir et reproduire.</div></div></div>
+    <div class="taz"><textarea class="ta" placeholder="Ce qui fonctionne bien, pourquoi, où le reproduire sur le T10 NOH..."></textarea></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     ENTRETIENS
+════════════════════════════════ -->
+<div id="p-ent" class="panel">
+  <div class="axhdr" style="--ac:var(--usr)">
+    <div class="axnum" style="color:var(--usr);font-size:1rem">💬</div>
+    <div>
+      <div class="axtitle">Entretiens informels — Usagers & Riverains</div>
+      <div class="axdesc">Documenter chaque échange mené sur le segment. Ces verbatims humanisent les scores et constituent la dimension qualitative de l'audit.</div>
+      <span class="axpill" style="--ac:var(--usr)">Usager — terrain</span>
+    </div>
+  </div>
+
+  <div style="background:color-mix(in srgb,var(--teal) 8%,white);border:1px solid color-mix(in srgb,var(--teal) 22%,transparent);border-radius:5px;padding:.55rem .85rem;font-size:.72rem;color:var(--teal);margin-bottom:.75rem;">
+    💬 Renseigner le genre et le profil à chaque entretien — données qualitatives clés. Citer sans noms.
+  </div>
+
+  <div id="entC"></div>
+  <button style="width:100%;border:1.5px dashed var(--border);background:none;border-radius:5px;padding:.55rem;font-family:var(--font-sans);font-size:.76rem;color:var(--muted);cursor:pointer;margin-bottom:1rem;" onclick="addEnt()">+ Ajouter un entretien</button>
+
+  <!-- Synthèse -->
+  <div style="background:color-mix(in srgb,var(--usr) 6%,white);border:1px solid color-mix(in srgb,var(--usr) 18%,transparent);border-radius:6px;padding:.9rem 1rem;margin-top:1rem;">
+    <div style="font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--usr);font-weight:500;margin-bottom:.7rem;">Synthèse des échanges — segment <span id="synSegLbl">SEG-01</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.65rem;">
+      <div><div style="font-family:var(--font-mono);font-size:.56rem;color:var(--s3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.28rem;">✅ Ce qui ressort positivement</div><textarea class="enta" placeholder="Points positifs mentionnés spontanément..."></textarea></div>
+      <div><div style="font-family:var(--font-mono);font-size:.56rem;color:var(--s1);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.28rem;">❌ Problèmes signalés</div><textarea class="enta" style="border-color:color-mix(in srgb,var(--s1) 18%,transparent);" placeholder="Gênes, dangers, inconforts..."></textarea></div>
+    </div>
+    <div style="margin-bottom:.65rem;"><div style="font-family:var(--font-mono);font-size:.56rem;color:var(--ax3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.28rem;">💡 Ce que les usagers voudraient</div><textarea class="enta" style="border-color:color-mix(in srgb,var(--ax3) 18%,transparent);" placeholder="Attentes, suggestions..."></textarea></div>
+    <div style="border-top:1px dashed var(--border);padding-top:.6rem;margin-top:.2rem;">
+      <div style="font-family:var(--font-mono);font-size:.56rem;color:var(--genre);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.28rem;">♀ Dimension genre dans les entretiens</div>
+      <textarea class="enta" style="border-color:color-mix(in srgb,var(--genre) 18%,transparent);" placeholder="Ce qui ressort des entretiens avec des femmes, adolescentes, seniors — vécu différencié, sentiment d'insécurité lié au genre..."></textarea>
+    </div>
+    <div style="margin-top:.65rem;display:flex;align-items:center;gap:.7rem;">
+      <span style="font-family:var(--font-mono);font-size:.58rem;color:var(--muted);">Nbre d'entretiens :</span>
+      <input type="number" min="0" placeholder="0" style="width:60px;border:1px solid var(--border);border-radius:3px;padding:.25rem .45rem;font-size:.78rem;font-family:var(--font-mono);">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     SYNTHÈSE
+════════════════════════════════ -->
+<div id="p-syn" class="panel">
+  <div class="axhdr" style="--ac:var(--teal)">
+    <div class="axnum" style="color:var(--teal);font-size:.95rem">◉</div>
+    <div>
+      <div class="axtitle">Tableau de synthèse — Score global</div>
+      <div class="axdesc">Scores calculés automatiquement. Critères NC exclus du calcul.</div>
+    </div>
+  </div>
+  <div class="gbox">
+    <div class="gnum" id="gN">—</div>
+    <div style="flex:1"><div style="font-size:.88rem;font-weight:600;margin-bottom:.18rem;" id="gL">Score global du segment</div><div style="font-size:.7rem;opacity:.62;" id="gD">Complétez les axes puis cliquez Calculer</div><div class="gbar" style="margin-top:.55rem;"><div class="gfill" id="gFill" style="width:0%"></div></div></div>
+    <div style="font-family:var(--font-mono);font-size:.6rem;opacity:.6;text-align:right"><span id="synId2" style="color:var(--gold)">—</span><br><span id="filledC">0</span>/<span id="totalC">0</span> critères</div>
+  </div>
+  <div class="sgrid" id="scoreGrid"></div>
+  <div class="radarwrap"><canvas id="radar" width="340" height="340"></canvas></div>
+  <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:.8rem .95rem;margin:.8rem 0;">
+    <div style="font-family:var(--font-mono);font-size:.58rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.55rem;">Segments évalués</div>
+    <div class="sstat" id="segStat"></div>
+  </div>
+  <div class="btnrow">
+    <button class="b1" onclick="calcScores()">⟳ Calculer</button>
+    <button class="b2" onclick="window.print()">🖨️ Imprimer</button>
+    <button class="b2" onclick="expJSON()">⬇️ JSON</button>
+    <button class="b2" onclick="expCSV()">⬇️ CSV tous segments</button>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const SEGS=[{id:'SEG-08',n:'M. Yourcenar → Simone Veil',d:'372 m'}];
+
+const AXES=[
+  {id:'ax1',s:'Cheminements',c:'var(--ax1)',h:'#1A4A8C',cs:['1A1','1A2','1A3','1A4','1B1','1B2','1C1','1C2']},
+  {id:'ax2',s:'Connexions',c:'var(--ax2)',h:'#1B5E3A',cs:['2A2','2B1','2B2','2B3','2B4']},
+  {id:'ax3',s:'Confort & Espace',c:'var(--ax2)',h:'#2E7D32',cs:['3A1','3A2','3B1','3B2','3C1','3C2']},
+  {id:'ax4',s:'Sécurité & Vécu',c:'var(--ax4)',h:'#880E4F',cs:['4A1','4A2','4B1','4B2']},
+  {id:'ax5',s:'Recommandations',c:'var(--ax5)',h:'#BF360C',cs:['5A1']},
+];
+
+// Remove ax5 from scoring
+const SCORING_AXES = AXES.filter(a=>a.id!=='ax5').concat([{id:'ax5',s:'Recommandations',c:'var(--ax5)',h:'#BF360C',cs:[]}]);
+
+const DB={};let cur='SEG-08';let eN=0;
+SEGS.forEach(s=>DB[s.id]={});
+const PROFILS=['Piéton adulte','Senior','PMR / fauteuil','Parent + poussette','Enfant / adolescent','Cycliste','Riverain','Travailleur','Autre'];
+const GENRES=['Homme','Femme','Autre / non-binaire','Ne souhaite pas répondre'];
+const FREQ=['Quotidien','Hebdomadaire','Occasionnel','Première fois'];
+
+function addEnt(){
+  eN++;const c=document.getElementById('entC');const d=document.createElement('div');
+  d.className='entb';
+  d.innerHTML=`<div class="enthd"><span class="entn">E${eN}</span><span class="entl">Entretien n°${eN}</span><button onclick="this.closest('.entb').remove()" style="margin-left:auto;background:none;border:none;color:var(--muted);cursor:pointer;font-size:.82rem;">✕</button></div>
+  <div class="entgrid">
+    <div class="entfield"><span class="entflbl">Profil</span><select class="entfinp">${PROFILS.map(p=>`<option>${p}</option>`).join('')}</select></div>
+    <div class="entfield"><span class="entflbl">Genre</span><select class="entfinp">${GENRES.map(g=>`<option>${g}</option>`).join('')}</select></div>
+    <div class="entfield"><span class="entflbl">Âge estimé</span><input class="entfinp" type="text" placeholder="ex. 60–70 ans"></div>
+    <div class="entfield"><span class="entflbl">Fréquence</span><select class="entfinp">${FREQ.map(f=>`<option>${f}</option>`).join('')}</select></div>
+    <div class="entfield"><span class="entflbl">Heure</span><input class="entfinp" type="time"></div>
+    <div class="entfield"><span class="entflbl">Langue</span><input class="entfinp" type="text" placeholder="FR / NL / Autre"></div>
+  </div>
+  <div class="entr"><div class="entprofil ep1">Apprécie</div><textarea class="enta" placeholder="Ce qui fonctionne bien..."></textarea></div>
+  <div class="entr"><div class="entprofil ep2">Gêne</div><textarea class="enta" style="border-color:color-mix(in srgb,var(--s1) 18%,transparent);" placeholder="Problèmes, inconforts, dangers..."></textarea></div>
+  <div class="entr"><div class="entprofil ep3">Attend</div><textarea class="enta" style="border-color:color-mix(in srgb,var(--ax3) 18%,transparent);" placeholder="Attentes, suggestions..."></textarea></div>`;
+  c.appendChild(d);
+}
+addEnt();addEnt();
+
+function selSeg(btn,id,n,d){
+  saveScores();cur=id;
+  document.querySelectorAll('.sbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  document.getElementById('ssId').textContent=id;
+  document.getElementById('ssName').textContent=n;
+  document.getElementById('ssDist').textContent=d;
+  document.getElementById('f-id').value=id;
+  document.getElementById('f-arr').value=n;
+  document.getElementById('f-dst').value=d;
+  ['synSegLbl','synId2'].forEach(i=>{const el=document.getElementById(i);if(el)el.textContent=id;});
+  loadScores(id);updProgress();
+}
+
+function saveScores(){
+  document.querySelectorAll('.sg').forEach(g=>{
+    const code=g.dataset.c;const sel=g.querySelector('.sb.on');
+    if(sel)DB[cur][code]=sel.dataset.v==='NC'?'NC':parseInt(sel.dataset.v);
+  });
+}
+
+function loadScores(sid){
+  const sc=DB[sid]||{};
+  document.querySelectorAll('.sg').forEach(g=>{
+    const code=g.dataset.c;
+    g.querySelectorAll('.sb').forEach(b=>b.classList.remove('on'));
+    if(sc[code]!==undefined){const btn=g.querySelector(`[data-v="${sc[code]}"]`);if(btn)btn.classList.add('on');}
+  });
+}
+
+function initBtns(){
+  document.querySelectorAll('.sg').forEach(g=>{
+    const c=g.dataset.c;
+    ['1','2','3','NC'].forEach(v=>{
+      const b=document.createElement('button');b.className='sb';b.dataset.v=v;b.textContent=v;
+      b.title=v==='NC'?'Non concerné':'Note '+v;
+      b.addEventListener('click',()=>{
+        g.querySelectorAll('.sb').forEach(x=>x.classList.remove('on'));
+        b.classList.add('on');DB[cur][c]=v==='NC'?'NC':parseInt(v);updProgress();
+      });
+      g.appendChild(b);
+    });
+  });
+}
+
+function swTab(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('p-'+id).classList.add('on');
+  if(btn)btn.classList.add('on');
+  if(id==='syn'){calcScores();drawRadar();renderStat();}
+  if(id==='ent'){const el=document.getElementById('synSegLbl');if(el)el.textContent=cur;}
+}
+
+function updProgress(){
+  const axcs=AXES.filter(a=>a.id!=='ax5').flatMap(a=>a.cs);
+  const total=axcs.length;
+  const filled=axcs.filter(c=>DB[cur][c]!==undefined).length;
+  document.getElementById('pf').style.width=Math.round((filled/total)*100)+'%';
+}
+
+function calcScores(){
+  saveScores();const sc=DB[cur];const grid=document.getElementById('scoreGrid');grid.innerHTML='';
+  let gS=0,gC=0,fT=0,cT=0;
+  const scoringAxes=AXES.filter(a=>a.id!=='ax5'&&a.cs.length>0);
+  scoringAxes.forEach(ax=>{
+    const vals=ax.cs.map(c=>sc[c]).filter(v=>v!==undefined&&v!=='NC');
+    const nc=ax.cs.filter(c=>sc[c]==='NC').length;
+    const filled=ax.cs.filter(c=>sc[c]!==undefined).length;
+    const avg=vals.length>0?vals.reduce((a,b)=>a+b,0)/vals.length:null;
+    const pct=avg?((avg-1)/2)*100:0;
+    fT+=filled;cT+=ax.cs.length-nc;
+    if(avg!==null){gS+=avg;gC++;}
+    const card=document.createElement('div');card.className='sc';card.style.setProperty('--ac',ax.c);
+    card.innerHTML=`<div class="scl">${ax.s}</div><div class="scv">${avg!==null?avg.toFixed(1):'—'}</div><div class="scm">/ 3${nc>0?` <span style="opacity:.45">(${nc} NC)</span>`:''}</div><div class="scb"><div class="scf" style="width:${pct}%"></div></div>`;
+    grid.appendChild(card);
+  });
+  const ga=gC>0?gS/gC:null;const gp=ga?((ga-1)/2)*100:0;
+  document.getElementById('gN').textContent=ga?ga.toFixed(1):'—';
+  document.getElementById('gFill').style.width=gp+'%';
+  document.getElementById('filledC').textContent=fT;
+  document.getElementById('totalC').textContent=cT;
+  const el=document.getElementById('synId2');if(el)el.textContent=cur;
+  let l='—',dd='Remplissez les axes puis cliquez Calculer';
+  if(ga!==null){
+    if(ga>=2.5){l='Excellent';dd='Haute qualité — à valoriser et reproduire';}
+    else if(ga>=1.5){l='Satisfaisant';dd='Améliorations ciblées recommandées';}
+    else{l='Insuffisant';dd='Déficiences importantes — action nécessaire';}
+  }
+  document.getElementById('gL').textContent=l;
+  document.getElementById('gD').textContent=dd;
+}
+
+function drawRadar(){
+  const sc=DB[cur];
+  const canvas=document.getElementById('radar');const ctx=canvas.getContext('2d');
+  const W=canvas.width,H=canvas.height,cx=W/2,cy=H/2,R=Math.min(W,H)/2-48;
+  const scoringAxes=AXES.filter(a=>a.id!=='ax5'&&a.cs.length>0);
+  const N=scoringAxes.length,sa=-Math.PI/2,step=(Math.PI*2)/N;
+  ctx.clearRect(0,0,W,H);
+  for(let r=1;r<=3;r++){
+    ctx.beginPath();
+    for(let i=0;i<N;i++){const a=sa+i*step,rd=(r/3)*R;i===0?ctx.moveTo(cx+Math.cos(a)*rd,cy+Math.sin(a)*rd):ctx.lineTo(cx+Math.cos(a)*rd,cy+Math.sin(a)*rd);}
+    ctx.closePath();ctx.strokeStyle=r===3?'rgba(0,61,124,.25)':'rgba(0,0,0,.06)';ctx.lineWidth=r===3?1.5:.7;ctx.stroke();
+    ctx.fillStyle='rgba(0,0,0,.2)';ctx.font='8.5px DM Mono,monospace';ctx.textAlign='center';
+    ctx.fillText(r,cx+2,cy-(r/3)*R+9);
+  }
+  for(let i=0;i<N;i++){const a=sa+i*step;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);ctx.strokeStyle='rgba(0,0,0,.08)';ctx.lineWidth=1;ctx.stroke();}
+  const vals=scoringAxes.map(ax=>{const v=ax.cs.map(c=>sc[c]).filter(x=>x!==undefined&&x!=='NC');return v.length>0?v.reduce((a,b)=>a+b,0)/v.length:0;});
+  ctx.beginPath();
+  vals.forEach((val,i)=>{const a=sa+i*step,r=(val/3)*R;i===0?ctx.moveTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r):ctx.lineTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r);});
+  ctx.closePath();ctx.fillStyle='rgba(0,133,124,.12)';ctx.fill();ctx.strokeStyle='rgba(0,133,124,.75)';ctx.lineWidth=2;ctx.stroke();
+  vals.forEach((val,i)=>{
+    const a=sa+i*step,r=(val/3)*R,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;
+    ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fillStyle=scoringAxes[i].h;ctx.fill();ctx.strokeStyle='white';ctx.lineWidth=1.5;ctx.stroke();
+    const lx=cx+Math.cos(a)*(R+28),ly=cy+Math.sin(a)*(R+28);
+    ctx.font='bold 9px DM Sans,sans-serif';ctx.fillStyle=scoringAxes[i].h;
+    ctx.textAlign=Math.abs(Math.cos(a))<.1?'center':Math.cos(a)>0?'left':'right';
+    ctx.fillText(scoringAxes[i].s,lx,ly+3);
+  });
+}
+
+function renderStat(){
+  const c=document.getElementById('segStat');c.innerHTML='';
+  const axcs=AXES.filter(a=>a.id!=='ax5').flatMap(a=>a.cs);
+  SEGS.forEach(s=>{
+    const f=axcs.filter(c=>DB[s.id][c]!==undefined).length;
+    const d=document.createElement('div');
+    d.className='ssi'+(f>0?' done':'');
+    d.textContent=s.id.replace('SEG-','')+(f>0?` ✓ (${f}/${axcs.length})`:'');
+    d.title=s.n;c.appendChild(d);
+  });
+}
+
+function expJSON(){
+  saveScores();const seg=SEGS.find(s=>s.id===cur);
+  const data={meta:{outil:'Grille Modes Actifs T10 NOH v6',date:new Date().toISOString(),segment:cur,arrets:seg?.n,distance:seg?.d},
+    scores:DB[cur],
+    synthese:AXES.filter(a=>a.cs.length>0).map(a=>{const v=a.cs.map(c=>DB[cur][c]).filter(x=>x!==undefined&&x!=='NC');return{axe:a.s,moyenne:v.length>0?(v.reduce((a,b)=>a+b,0)/v.length).toFixed(2):null};})};
+  dl(JSON.stringify(data,null,2),'application/json',`T10-NOH-${cur}-v6.json`);
+}
+
+function expCSV(){
+  saveScores();const cs=AXES.filter(a=>a.id!=='ax5').flatMap(a=>a.cs);
+  let csv='Segment;Arrêts;'+cs.join(';')+';Score_global\n';
+  SEGS.forEach(s=>{
+    const sc=DB[s.id];const vals=cs.map(c=>sc[c]!==undefined?sc[c]:'');
+    const num=cs.map(c=>sc[c]).filter(v=>v!==undefined&&v!=='NC').map(Number);
+    const avg=num.length>0?(num.reduce((a,b)=>a+b,0)/num.length).toFixed(2):'';
+    csv+=`${s.id};${s.n};${vals.join(';')};${avg}\n`;
+  });
+  dl(csv,'text/csv;charset=utf-8;','T10-NOH-audit-v6-tous-segments.csv');
+}
+
+function dl(content,type,name){const b=new Blob([content],{type});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;a.click();}
+
+function loadCarte(input){
+  const file=input.files[0];if(!file)return;
+  const r=new FileReader();
+  r.onload=e=>{const z=document.getElementById('carteZone');z.innerHTML=`<img src="${e.target.result}" alt="Carte SIG">`;z.onclick=()=>document.getElementById('carteFile').click();};
+  r.readAsDataURL(file);
+}
+
+// Init
+document.getElementById('hdrDate').textContent='T10 NOH · '+new Date().toLocaleDateString('fr-BE',{day:'2-digit',month:'long',year:'numeric'})+'  ·  Josline Kouamé, stagiaire · BM Service Planification';
+document.getElementById('f-date').value=new Date().toISOString().split('T')[0];
+document.getElementById('f-id').value='SEG-08';
+document.getElementById('f-arr').value='M. Yourcenar → Simone Veil';
+document.getElementById('f-dst').value='372 m';
+initBtns();drawRadar();
+</script>
+</body>
+</html>
